@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+MyfileRead = open("Handlingslista", "r")
+MyfileAppend = open("Handlingslista", "a")
+Shoppinglista = []
+def Additems():
+    print("Hej! vill du lägga till några varor? ")
+    introduce = input()
+    if introduce == "Ja":
+        print("Vad vill du lägga till? ")
+        Additem = input()
+        Shoppinglista.append(Additem)
+        print("Vill du lägga till något mer? ")
+        additem2 = input()
+        if Additem == "Ja":
+            Additems()
+        if Additem == "Nej":
+            MyfileAppend.write(" ".join(Shoppinglista))
+            print("Ok! Stänger ner programmet!")
+
+
+    if introduce == "Nej":
+        print("Vill du se vad du har lagt till i din Handlingslista? ")
+        SeeShoppinglist = input()
+        if SeeShoppinglist == "Ja":
+            print(Shoppinglista)
+        if SeeShoppinglist == "Nej":
+            print("Stänger ner programmet!");
+
+
+
+while True:
+    Additems()
+    MyfileRead.read()
+    if MyfileRead.read == Shoppinglista:
+        break
+
+MyfileRead.close()
+MyfileAppend.close()
